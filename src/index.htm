@@ -1,16 +1,42 @@
 <!doctype html>
 <html lang="en-US">
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>Coding Template</title>
   <link rel="stylesheet" type="text/css" href="bundle.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
 <body>
-  <h1>Webpack - TypeScript - Scss</h1>
-  <h2>TypeScript Hello World</h2>  
-  <div id="content"></div>
-    
+  <h1>Bookstore</h1>
+<div id="app">
+
+  <h2>Get Books</h2>
+  <button v-on:click="showBooks">Get all books</button>
+  
+  <ul v-if="books.length">
+    <li v-for="book in books">
+      {{book.id}} {{book.title}} {{book.author}} {{book.price}}
+    </li>
+      
+  </ul>
+  
+  <h2>Add Book</h2>
+  <div id="contentAdd"></div>
+  <input v-model="bookForm.title" placeholder="title" type="text" />
+  <input v-model="bookForm.author" placeholder="author" type="text" />
+  <input v-model="bookForm.price" placeholder="price" type="number" />
+  <button v-on:click="addBook()">Add</button>
+  <div>{{addMessage}}</div>
+
+  <h2>Delete Book</h2>
+  <input v-model="deleteId" placeholder="id" type="number" />
+  <button v-on:click="deleteBook(deleteId)">Delete</button>
+  <div>{{deleteMessage}}</div>
+
+</div>
   <script src="bundle.js"></script>
 </body>
+
 </html>
